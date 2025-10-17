@@ -49,4 +49,32 @@ describe('ApiClient', () => {
     expect(req.request.body).toEqual(body);
     req.flush({ id: 123 });
   });
+
+  it('deve realizar PUT com body', () => {
+    // Arrange
+    const body = { a: 2 };
+    // Act
+    client.put<{ success: boolean }>('items/1', body).subscribe((res) => {
+      // Assert
+      expect(res.success).toBe(true);
+    });
+
+    // Assert (request)
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/items/1`);
+    expect(req.request.method).toBe('PUT');
+    expect(req.request.body).toEqual(body);
+    req.flush({ success: true });
+  });
+
+  it('deve realizar DELETE', () => {
+    // Act
+    client.delete<{ deleted: boolean }>('items/1').subscribe((res) => {
+      // Assert
+      expect(res.deleted).toBe(true);
+    });
+    // Assert (request)
+    const req = httpMock.expectOne(`${environment.apiBaseUrl}/items/1`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush({ deleted: true });
+  });
 });
