@@ -18,7 +18,7 @@ export class ThemeService {
       try {
         localStorage.setItem('theme', theme);
       } catch {}
-      this.document.documentElement.setAttribute('data-theme', theme);
+      this.document.documentElement.dataset['theme'] = theme;
     });
   }
 
