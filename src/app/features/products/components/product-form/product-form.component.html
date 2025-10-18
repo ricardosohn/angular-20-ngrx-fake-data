@@ -87,7 +87,7 @@
         <div class="flex items-start">
           <input #fileInput type="file" accept="image/*" class="input-file input-file-primary w-full max-w-full" (change)="onFileSelected($event)" aria-label="{{ 'image' | translate }}" />
           @if (selectedFileName()) {
-          <button type="button" class="btn btn-ghost ml-2" (click)="clearImage(fileInput)">{{ 'removeImage' | translate }}</button>
+            <button type="button" class="btn btn-ghost ml-2" (click)="clearImage(fileInput)">{{ 'removeImage' | translate }}</button>
           }
           </div>
         @if(form.controls.image.touched && form.controls.image.invalid) {

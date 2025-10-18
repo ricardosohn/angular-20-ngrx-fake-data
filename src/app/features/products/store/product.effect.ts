@@ -43,4 +43,16 @@ export class ProductEffects {
       )
     )
   );
+
+  updateProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.updateProduct),
+      switchMap(({ id, productChanges }) =>
+        this.api.update(id, productChanges).pipe(
+          map((product) => ProductActions.updateProductSuccess({ product })),
+          catchError(error => of(ProductActions.updateProductFailure({ error })))
+        )
+      )
+    )
+  );
 }

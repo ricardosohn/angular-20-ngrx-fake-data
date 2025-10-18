@@ -18,6 +18,7 @@ export class ProductVM {
   }
 
   updateProduct(id: number, productChanges: UpdateProductDto): void {
+    this.store.dispatch(ProductActions.updateProduct({ id, productChanges }));
   }
 
   deleteProduct(productId: number): void {

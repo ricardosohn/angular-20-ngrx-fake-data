@@ -1,4 +1,7 @@
-<app-create-product-modal></app-create-product-modal>
+<app-product-form-modal
+  [initial]="selectedEdit()"
+  (closed)="onEditModalClosed()"
+></app-product-form-modal>
 <app-confirm-dialog
   [modalId]="deleteModalId"
   titleKey="removeConfirmTitle"
@@ -20,7 +23,12 @@
     </thead>
     <tbody>
       @for (product of vm.products(); track $index) {
-        <tr app-product-row [product]="product" (edit)="edit($event)" (remove)="askRemove($event)"></tr>
+      <tr
+        app-product-row
+        [product]="product"
+        (edit)="edit($event)"
+        (remove)="askRemove($event)"
+      ></tr>
       }
     </tbody>
   </table>
