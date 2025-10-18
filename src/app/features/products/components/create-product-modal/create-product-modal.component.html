@@ -1,0 +1,15 @@
+<label class="btn btn-primary mb-4" for="modal-1">+ {{ "newProduct" | translate }}</label>
+<input class="modal-state" id="modal-1" type="checkbox" />
+	<div class="modal">
+		<label class="modal-overlay" for="modal-1"></label>
+		<div class="modal-content flex w-full flex-col gap-5 p-7">
+			<label for="modal-1" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+			<div class="flex flex-col gap-2">
+				<h2 class="text-2xl font-semibold">{{ "newProduct" | translate }}</h2>
+			</div>
+
+			<section>
+				<app-product-form></app-product-form>
+			</section>
+		</div>
+	</div>

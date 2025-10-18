@@ -1,0 +1,82 @@
+<div class="form-group">
+  <div class="form-field">
+    <label class="form-label">ID</label>
+    <input
+      [placeholder]="'typeHere' | translate"
+      type="number"
+      class="input max-w-full"
+      aria-label="ID"
+    />
+  </div>
+
+  <div class="form-field">
+    <label class="form-label">
+      <span>{{ 'title' | translate }}</span>
+    </label>
+    <div class="form-control">
+      <input
+        [placeholder]="'typeHere' | translate"
+        type="text"
+        class="input max-w-full"
+        aria-label="{{ 'title' | translate }}"
+      />
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label">
+      <span>{{ 'price' | translate }}</span>
+    </label>
+    <div class="form-control">
+      <input
+        [placeholder]="'typeHere' | translate"
+        type="text"
+        class="input max-w-full"
+        aria-label="{{ 'price' | translate }}"
+      />
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label">
+      <span>{{ 'description' | translate }}</span>
+    </label>
+    <div class="form-control">
+      <input
+        [placeholder]="'typeHere' | translate"
+        type="text"
+        class="input max-w-full"
+        aria-label="{{ 'description' | translate }}"
+      />
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label">
+      <span>{{ 'category' | translate }}</span>
+    </label>
+    <div class="form-control">
+      <input
+        [placeholder]="'typeHere' | translate"
+        type="text"
+        class="input max-w-full"
+        aria-label="{{ 'category' | translate }}"
+      />
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label">
+      <span>{{ 'image' | translate }}</span>
+    </label>
+    <div class="form-control">
+      <input type="file" class="input-file input-file-primary" />
+    </div>
+  </div>
+
+  <div class="form-field pt-5">
+    <div class="form-control justify-between">
+      <button type="button" class="btn btn-primary w-full">Enviar</button>
+    </div>
+  </div>
+</div>

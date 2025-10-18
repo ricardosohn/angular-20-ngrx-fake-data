@@ -12,5 +12,7 @@
   "image": "Image",
   "title": "Title",
   "price": "Price",
-  "actions": "Actions"
+  "actions": "Actions",
+  "newProduct": "New Product",
+  "typeHere": "Type here"
 }

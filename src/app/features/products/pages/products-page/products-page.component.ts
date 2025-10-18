@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ProductVM } from '../../store/product.vm';
 import { TranslatePipe } from "../../../../shared/pipes/translate.pipe";
 import { ProductRowComponent } from "../../components/product-row/product-row.component";
+import { CreateProductModalComponent } from "../../components/create-product-modal/create-product-modal.component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [TranslatePipe, ProductRowComponent],
+  imports: [TranslatePipe, ProductRowComponent, CreateProductModalComponent],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })

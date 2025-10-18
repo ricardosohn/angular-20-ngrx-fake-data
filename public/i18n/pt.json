@@ -12,5 +12,7 @@
   "image": "Imagem",
   "title": "Título",
   "price": "Preço",
-  "actions": "Ações"
+  "actions": "Ações",
+  "newProduct": "Novo Produto",
+  "typeHere": "Digite aqui"
 }
