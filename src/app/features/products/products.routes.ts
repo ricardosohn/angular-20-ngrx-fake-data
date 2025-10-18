@@ -8,6 +8,7 @@ import { ProductEffects } from './store/product.effect';
 export const routes: Routes = [
 	{
 		path: 'products',
+    data: { titleKey: 'productsPageTitle' },
 		providers: [
 			provideState(PRODUCTS_KEY, productsReducer),
 			provideEffects(ProductEffects)

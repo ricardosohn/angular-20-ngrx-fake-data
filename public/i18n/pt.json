@@ -1,0 +1,15 @@
+{
+  "appName": "Loja FakeApi",
+  "products": "Produtos",
+  "users": "Usuários",
+  "pageTitleFallback": "Página sem título",
+  "loading": "Carregando ...",
+  "tooltipToggleDarkMode": "Modo escuro",
+  "tooltipToggleLightMode": "Modo claro",
+  "language": "Idioma",
+  "productsPageTitle": "Produtos",
+  "usersPageTitle": "Usuários",
+  "image": "Imagem",
+  "title": "Título",
+  "price": "Preço"
+}

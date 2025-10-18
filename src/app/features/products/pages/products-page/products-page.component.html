@@ -1,9 +1,20 @@
-<table>
-@for (product of vm.products(); track $index) {
-<tr>
-  <td><img [src]="product.image" alt="{{ product.title }}" width="50" /></td>
-  <td>{{ product.title }}</td>
-  <td>\${{ product.price }}</td>
-</tr>
-}
-</table>
+<div class="flex w-full overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{ "image" | translate }}</th>
+        <th>{{ "title" | translate }}</th>
+        <th>{{ "price" | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of vm.products(); track $index) {
+      <tr>
+        <td><img [src]="product.image" [alt]="" width="50" /></td>
+        <td>{{ product.title}}</td>
+        <td>\${{ product.price}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

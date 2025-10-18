@@ -1,10 +1,11 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductVM } from '../../store/product.vm';
+import { TranslatePipe } from "../../../../shared/i18n/translate.pipe";
+
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })
