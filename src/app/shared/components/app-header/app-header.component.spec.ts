@@ -3,7 +3,7 @@ import { AppHeaderComponent } from './app-header.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { TranslationService } from '../../../core/services/translation.service';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService } from '../../../core/services/theme.service';
 
 describe('AppHeaderComponent', () => {
   let fixture: ComponentFixture<AppHeaderComponent>;

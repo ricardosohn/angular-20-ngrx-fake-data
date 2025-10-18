@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslatePipe } from './translate.pipe';
-import { TranslationService } from '../services/translation.service';
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   standalone: true,

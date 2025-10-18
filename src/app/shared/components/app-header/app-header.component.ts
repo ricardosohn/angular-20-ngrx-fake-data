@@ -1,9 +1,9 @@
 import { Component, Signal, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService } from '../../../core/services/theme.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
-import { TranslatePipe } from '../../../core/pipes/translate.pipe';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 import { TranslationService } from '../../../core/services/translation.service';
 
 @Component({

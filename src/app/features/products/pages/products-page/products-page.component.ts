@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductVM } from '../../store/product.vm';
-import { TranslatePipe } from "../../../../core/pipes/translate.pipe";
+import { TranslatePipe } from "../../../../shared/pipes/translate.pipe";
 
 
 @Component({
