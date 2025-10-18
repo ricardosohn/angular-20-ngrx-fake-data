@@ -11,5 +11,6 @@
   "usersPageTitle": "Users",
   "image": "Image",
   "title": "Title",
-  "price": "Price"
+  "price": "Price",
+  "actions": "Actions"
 }
