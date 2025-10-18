@@ -1,0 +1,25 @@
+<td class="place-items-center"><img [src]="product().image" alt="" width="50" /></td>
+<td>{{ product().title }}</td>
+<td>${{ product().price }}</td>
+<td class="text-right">
+  <button
+    class="btn btn-sm btn-outline-warning mr-2"
+    type="button"
+    (click)="edit.emit(product())"
+    [title]="'edit' | translate"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+    </svg>
+  </button>
+  <button
+    class="btn btn-sm btn-outline-error"
+    type="button"
+    (click)="remove.emit(product())"
+    [title]="'remove' | translate"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+    </svg>
+  </button>
+</td>

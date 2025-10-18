@@ -1,19 +1,16 @@
 <div class="flex w-full overflow-x-auto">
-  <table class="table">
+  <table class="table table-zebra">
     <thead>
       <tr>
         <th>{{ "image" | translate }}</th>
         <th>{{ "title" | translate }}</th>
         <th>{{ "price" | translate }}</th>
+        <th>{{ "actions" | translate }}</th>
       </tr>
     </thead>
     <tbody>
       @for (product of vm.products(); track $index) {
-      <tr>
-        <td><img [src]="product.image" alt="" width="50" /></td>
-        <td>{{ product.title}}</td>
-        <td>${{ product.price}}</td>
-      </tr>
+        <tr app-product-row [product]="product" (edit)="vm.updateProduct(product.id, product)"></tr>
       }
     </tbody>
   </table>
