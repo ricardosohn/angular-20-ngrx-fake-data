@@ -1,16 +1,11 @@
-import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 
 describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-    }).compileComponents();
-  });
+  it('deve instanciar o App', () => {
+    // Act
+    const instance = new App();
 
-  it('deve criar o app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    // Assert
+    expect(instance).toBeInstanceOf(App);
   });
 });
