@@ -1,17 +1,26 @@
 <app-create-product-modal></app-create-product-modal>
+<app-confirm-dialog
+  [modalId]="deleteModalId"
+  titleKey="removeConfirmTitle"
+  messageKey="removeConfirmMessage"
+  confirmKey="confirm"
+  cancelKey="cancel"
+  (confirm)="confirmRemove()"
+  (cancel)="cancelRemove()"
+></app-confirm-dialog>
 <div class="flex w-full overflow-x-auto">
   <table class="table table-zebra">
     <thead>
       <tr>
-        <th>{{ "image" | translate }}</th>
-        <th>{{ "title" | translate }}</th>
-        <th>{{ "price" | translate }}</th>
-        <th>{{ "actions" | translate }}</th>
+        <th>{{ 'image' | translate }}</th>
+        <th>{{ 'title' | translate }}</th>
+        <th>{{ 'price' | translate }}</th>
+        <th>{{ 'actions' | translate }}</th>
       </tr>
     </thead>
     <tbody>
       @for (product of vm.products(); track $index) {
-        <tr app-product-row [product]="product" (edit)="vm.updateProduct(product.id, product)"></tr>
+        <tr app-product-row [product]="product" (edit)="edit($event)" (remove)="askRemove($event)"></tr>
       }
     </tbody>
   </table>

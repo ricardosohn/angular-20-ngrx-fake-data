@@ -14,5 +14,12 @@
   "price": "Preço",
   "actions": "Ações",
   "newProduct": "Novo Produto",
-  "typeHere": "Digite aqui"
+  "typeHere": "Digite aqui",
+  "edit": "Editar",
+  "remove": "Excluir",
+  "confirmTitle": "Confirmar",
+  "confirm": "Confirmar",
+  "cancel": "Cancelar",
+  "removeConfirmTitle": "Excluir produto",
+  "removeConfirmMessage": "Tem certeza que deseja excluir este produto?"
 }

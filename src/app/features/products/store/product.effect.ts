@@ -19,4 +19,16 @@ export class ProductEffects {
       )
     )
   );
+
+  deleteProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.deleteProduct),
+      switchMap(({ productId }) =>
+        this.api.delete(productId).pipe(
+          map(() => ProductActions.deleteProductSuccess({ productId })),
+          catchError(error => of(ProductActions.deleteProductFailure({ error })))
+        )
+      )
+    )
+  );
 }

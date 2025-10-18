@@ -17,9 +17,17 @@ const initialState: ProductsState = entityAdapter.getInitialState({
 });
 
 export const productsReducer = createReducer(initialState,
+  // Load Product
   on(ProductActions.loadProducts, state => ({ ...state, loading: true, error: null })),
   on(ProductActions.loadProductsSuccess, (state, { products }) =>
     entityAdapter.setAll(products, { ...state, loading: false })
   ),
-  on(ProductActions.loadProductsFailure, (state, { error }) => ({ ...state, loading: false, error }))
+  on(ProductActions.loadProductsFailure, (state, { error }) => ({ ...state, loading: false, error })),
+
+  // Delete Product
+  on(ProductActions.deleteProduct, state => ({ ...state, loading: true, error: null } )),
+  on(ProductActions.deleteProductSuccess, (state, { productId }) =>
+    entityAdapter.removeOne(productId, { ...state, loading: false })
+  ),
+  on(ProductActions.deleteProductFailure, (state, { error }) => ({ ...state, loading: false, error })),
 );

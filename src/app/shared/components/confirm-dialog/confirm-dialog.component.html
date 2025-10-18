@@ -1,0 +1,21 @@
+<input class="modal-state" [id]="modalId()" type="checkbox" aria-label="modal state" />
+<div class="modal">
+  <label class="modal-overlay" [for]="modalId()" (click)="cancel.emit()"></label>
+  <div class="modal-content flex w-full flex-col gap-5 p-7">
+    <label [for]="modalId()" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" (click)="cancel.emit()">✕</label>
+
+    <div class="flex flex-col gap-2">
+      <h2 class="text-2xl font-semibold">{{ titleKey() | translate }}</h2>
+      @if(messageKey()) {
+        <p class="text-gray-600">{{ messageKey() | translate }}</p>
+      }
+
+    </div>
+
+    <div class="flex justify-end gap-3 mt-4">
+      <label [for]="modalId()" class="btn btn-ghost" (click)="cancel.emit()">{{ cancelKey() | translate }}</label>
+      <label [for]="modalId()" class="btn btn-error" (click)="confirm.emit()">{{ confirmKey() | translate }}</label>
+    </div>
+  </div>
+
+</div>
