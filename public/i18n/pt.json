@@ -21,5 +21,7 @@
   "confirm": "Confirmar",
   "cancel": "Cancelar",
   "removeConfirmTitle": "Excluir produto",
-  "removeConfirmMessage": "Tem certeza que deseja excluir este produto?"
+  "removeConfirmMessage": "Tem certeza que deseja excluir este produto?",
+  "description": "Descrição",
+  "category": "Categoria"
 }

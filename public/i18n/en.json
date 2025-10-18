@@ -21,5 +21,7 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "removeConfirmTitle": "Delete product",
-  "removeConfirmMessage": "Are you sure you want to delete this product?"
+  "removeConfirmMessage": "Are you sure you want to delete this product?",
+  "description": "Description",
+  "category": "Category"
 }
