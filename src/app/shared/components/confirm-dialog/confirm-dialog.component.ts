@@ -10,7 +10,8 @@ import { TranslatePipe } from "../../pipes/translate.pipe";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmDialogComponent {
-  readonly modalId = input.required<string>(); // should match the checkbox id
+  readonly modalId = input.required<string>();
+
   readonly titleKey = input('confirmTitle');
   readonly messageKey = input('');
   readonly confirmKey = input('confirm');
