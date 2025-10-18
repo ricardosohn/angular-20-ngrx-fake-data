@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppHeaderComponent } from './app-header.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { TranslationService } from '../../i18n/translation.service';
+import { TranslationService } from '../../services/translation.service';
 import { ThemeService } from '../../services/theme.service';
 
 describe('AppHeaderComponent', () => {
