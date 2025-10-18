@@ -23,5 +23,19 @@
   "removeConfirmTitle": "Excluir produto",
   "removeConfirmMessage": "Tem certeza que deseja excluir este produto?",
   "description": "Descrição",
-  "category": "Categoria"
+  "category": "Categoria",
+  "imageUrl": "URL da imagem",
+  "placeholderTitle": "Digite o título do produto",
+  "placeholderPrice": "Digite o preço (ex: 99.90)",
+  "placeholderDescription": "Descreva o produto",
+  "placeholderCategory": "Informe a categoria",
+  "placeholderImageUrl": "Cole a URL da imagem (https://...)",
+  "removeImage": "Remover imagem",
+  "save": "Salvar",
+  "validationTitle": "Título é obrigatório (mín. 3 caracteres)",
+  "validationPrice": "Preço é obrigatório e deve ser maior que zero",
+  "validationDescription": "Descrição é obrigatória (mín. 10 caracteres)",
+  "validationCategory": "Categoria é obrigatória (mín. 3 caracteres)",
+  "validationImageUrl": "Informe uma URL válida iniciando com http(s)",
+  "validationImage": "Imagem é obrigatória"
 }

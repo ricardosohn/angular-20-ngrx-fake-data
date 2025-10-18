@@ -3,7 +3,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { Store } from "@ngrx/store";
 import { selectError, selectLoading, selectProducts } from "./product.selectors";
 import { ProductActions } from "./product.actions";
-import { Product, UpdateProductDto } from "../models/product.model";
+import { CreateProductDto, Product, UpdateProductDto } from "../models/product.model";
 
 @Injectable({ providedIn: 'root' })
 export class ProductVM {
@@ -22,5 +22,9 @@ export class ProductVM {
 
   deleteProduct(productId: number): void {
     this.store.dispatch(ProductActions.deleteProduct({ productId }));
+  }
+
+  createProduct(dto: CreateProductDto): void {
+    this.store.dispatch(ProductActions.createProduct({ dto }));
   }
 }

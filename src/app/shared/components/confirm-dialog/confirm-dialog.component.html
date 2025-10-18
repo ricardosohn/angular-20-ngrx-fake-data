@@ -1,4 +1,4 @@
-<input class="modal-state" [id]="modalId()" type="checkbox" aria-label="modal state" />
+<input #modal class="modal-state" [id]="modalId()" type="checkbox" aria-label="modal state" />
 <div class="modal">
   <label class="modal-overlay" [for]="modalId()" (click)="cancel.emit()"></label>
   <div class="modal-content flex w-full flex-col gap-5 p-7">

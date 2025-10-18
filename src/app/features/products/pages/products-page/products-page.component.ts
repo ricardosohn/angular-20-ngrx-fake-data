@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import { ProductVM } from '../../store/product.vm';
 import { TranslatePipe } from "../../../../shared/pipes/translate.pipe";
 import { ProductRowComponent } from "../../components/product-row/product-row.component";
@@ -15,8 +15,11 @@ import { Product } from '../../models/product.model';
 })
 export class ProductsPageComponent implements OnInit{
   readonly vm = inject(ProductVM);
+
   readonly selectedProduct = signal<Product | null>(null);
+
   readonly deleteModalId = 'modal-delete-product';
+  readonly confirmDialog = viewChild(ConfirmDialogComponent);
 
   ngOnInit() {
     this.loadProducts();
@@ -32,9 +35,7 @@ export class ProductsPageComponent implements OnInit{
 
   askRemove(product: Product): void {
     this.selectedProduct.set(product);
-    // open modal by checking the checkbox programmatically
-    const input = document.getElementById(this.deleteModalId) as HTMLInputElement | null;
-    if (input) input.checked = true;
+    this.confirmDialog()?.open();
   }
 
   confirmRemove(): void {

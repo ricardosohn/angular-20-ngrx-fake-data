@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Product, UpdateProductDto } from '../models/product.model';
+import { Product, UpdateProductDto, CreateProductDto } from '../models/product.model';
 
 export const ProductActions = createActionGroup({
   source: 'Products',
@@ -7,6 +7,10 @@ export const ProductActions = createActionGroup({
     loadProducts: emptyProps(),
     loadProductsSuccess: props<{ products: Product[] }>(),
     loadProductsFailure: props<{ error: unknown }>(),
+
+    createProduct: props<{ dto: CreateProductDto }>(),
+    createProductSuccess: props<{ product: Product }>(),
+    createProductFailure: props<{ error: unknown }>(),
 
     updateProduct: props<{ id: number, productChanges: UpdateProductDto }>(),
     updateProductSuccess: props<{ product: Product }>(),

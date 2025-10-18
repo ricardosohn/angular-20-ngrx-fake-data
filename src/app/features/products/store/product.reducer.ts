@@ -24,6 +24,13 @@ export const productsReducer = createReducer(initialState,
   ),
   on(ProductActions.loadProductsFailure, (state, { error }) => ({ ...state, loading: false, error })),
 
+  // Create Product
+  on(ProductActions.createProduct, state => ({ ...state, loading: true, error: null })),
+  on(ProductActions.createProductSuccess, (state, { product }) =>
+    entityAdapter.addOne(product, { ...state, loading: false })
+  ),
+  on(ProductActions.createProductFailure, (state, { error }) => ({ ...state, loading: false, error })),
+
   // Delete Product
   on(ProductActions.deleteProduct, state => ({ ...state, loading: true, error: null } )),
   on(ProductActions.deleteProductSuccess, (state, { productId }) =>

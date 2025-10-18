@@ -1,82 +1,106 @@
-<div class="form-group">
-  <div class="form-field">
-    <label class="form-label">ID</label>
-    <input
-      [placeholder]="'typeHere' | translate"
-      type="number"
-      class="input max-w-full"
-      aria-label="ID"
-    />
-  </div>
-
-  <div class="form-field">
-    <label class="form-label">
-      <span>{{ 'title' | translate }}</span>
-    </label>
-    <div class="form-control">
-      <input
-        [placeholder]="'typeHere' | translate"
-        type="text"
-        class="input max-w-full"
-        aria-label="{{ 'title' | translate }}"
-      />
+<form [formGroup]="form" (ngSubmit)="submit()" class="form-group">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="form-field">
+      <label class="form-label">
+        <span>{{ 'title' | translate }}</span>
+      </label>
+      <div class="form-control">
+        <input
+          formControlName="title"
+          [placeholder]="'placeholderTitle' | translate"
+          type="text"
+          class="input max-w-full"
+          aria-label="{{ 'title' | translate }}"
+        />
+        @if(form.controls.title.touched && form.controls.title.invalid) {
+          <p class="mt-1 text-sm text-error">{{ 'validationTitle' | translate }}</p>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="form-field">
-    <label class="form-label">
-      <span>{{ 'price' | translate }}</span>
-    </label>
-    <div class="form-control">
-      <input
-        [placeholder]="'typeHere' | translate"
-        type="text"
-        class="input max-w-full"
-        aria-label="{{ 'price' | translate }}"
-      />
+    <div class="form-field">
+      <label class="form-label">
+        <span>{{ 'price' | translate }}</span>
+      </label>
+      <div class="form-control">
+          <div class="flex items-center gap-2">
+            <input
+              formControlName="price"
+              [placeholder]="'placeholderPrice' | translate"
+              type="text"
+              class="input max-w-full flex-1"
+              mask="separator.2"
+              [thousandSeparator]="','"
+              [decimalMarker]="'.'"
+              prefix="$"
+              [dropSpecialCharacters]="true"
+              aria-label="{{ 'price' | translate }}"
+            />
+          </div>
+        @if(form.controls.price.touched && form.controls.price.invalid) {
+          <p class="mt-1 text-sm text-error">{{ 'validationPrice' | translate }}</p>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="form-field">
-    <label class="form-label">
-      <span>{{ 'description' | translate }}</span>
-    </label>
-    <div class="form-control">
-      <input
-        [placeholder]="'typeHere' | translate"
-        type="text"
-        class="input max-w-full"
-        aria-label="{{ 'description' | translate }}"
-      />
+    <div class="form-field md:col-span-2">
+      <label class="form-label">
+        <span>{{ 'description' | translate }}</span>
+      </label>
+      <div class="form-control">
+        <textarea
+          formControlName="description"
+          [placeholder]="'placeholderDescription' | translate"
+          rows="4"
+          class="textarea max-w-full"
+          aria-label="{{ 'description' | translate }}"
+        ></textarea>
+        @if(form.controls.description.touched && form.controls.description.invalid) {
+          <p class="mt-1 text-sm text-error">{{ 'validationDescription' | translate }}</p>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="form-field">
-    <label class="form-label">
-      <span>{{ 'category' | translate }}</span>
-    </label>
-    <div class="form-control">
-      <input
-        [placeholder]="'typeHere' | translate"
-        type="text"
-        class="input max-w-full"
-        aria-label="{{ 'category' | translate }}"
-      />
+    <div class="form-field md:col-span-2">
+      <label class="form-label">
+        <span>{{ 'category' | translate }}</span>
+      </label>
+      <div class="form-control">
+        <input
+          formControlName="category"
+          [placeholder]="'placeholderCategory' | translate"
+          type="text"
+          class="input max-w-full"
+          aria-label="{{ 'category' | translate }}"
+        />
+        @if(form.controls.category.touched && form.controls.category.invalid) {
+          <p class="mt-1 text-sm text-error">{{ 'validationCategory' | translate }}</p>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="form-field">
-    <label class="form-label">
-      <span>{{ 'image' | translate }}</span>
-    </label>
-    <div class="form-control">
-      <input type="file" class="input-file input-file-primary" />
+    <div class="form-field md:col-span-2">
+      <label class="form-label">
+        <span>{{ 'image' | translate }}</span>
+      </label>
+      <div class="form-control">
+        <div class="flex items-start">
+          <input #fileInput type="file" accept="image/*" class="input-file input-file-primary w-full max-w-full" (change)="onFileSelected($event)" aria-label="{{ 'image' | translate }}" />
+          @if (selectedFileName()) {
+          <button type="button" class="btn btn-ghost ml-2" (click)="clearImage(fileInput)">{{ 'removeImage' | translate }}</button>
+          }
+          </div>
+        @if(form.controls.image.touched && form.controls.image.invalid) {
+          <p class="mt-1 text-sm text-error">{{ 'validationImage' | translate }}</p>
+        }
+      </div>
+
     </div>
   </div>
 
   <div class="form-field pt-5">
     <div class="form-control justify-between">
-      <button type="button" class="btn btn-primary w-full">Enviar</button>
+      <button type="submit" class="btn btn-primary w-full">{{ 'save' | translate }}</button>
     </div>
   </div>
-</div>
+</form>

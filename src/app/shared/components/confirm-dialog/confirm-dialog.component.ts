@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, input, output, viewChild } from '@angular/core';
 import { TranslatePipe } from "../../pipes/translate.pipe";
 
 @Component({
@@ -18,4 +18,16 @@ export class ConfirmDialogComponent {
 
   readonly confirm = output<void>();
   readonly cancel = output<void>();
+
+  readonly modalInput = viewChild<ElementRef<HTMLInputElement>>('modal');
+
+  open(): void {
+    const el = this.modalInput()?.nativeElement;
+    if (el) el.checked = true;
+  }
+
+  close(): void {
+    const el = this.modalInput()?.nativeElement;
+    if (el) el.checked = false;
+  }
 }
