@@ -5,7 +5,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
-import { TranslationService } from './shared/i18n/translation.service';
+import { TranslationService } from './core/services/translation.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

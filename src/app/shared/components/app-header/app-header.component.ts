@@ -3,8 +3,8 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
-import { TranslatePipe } from '../../i18n/translate.pipe';
-import { TranslationService } from '../../i18n/translation.service';
+import { TranslatePipe } from '../../../core/pipes/translate.pipe';
+import { TranslationService } from '../../../core/services/translation.service';
 
 @Component({
   selector: 'app-header',
