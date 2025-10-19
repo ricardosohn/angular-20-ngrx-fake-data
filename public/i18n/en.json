@@ -13,6 +13,7 @@
   "language": "Language",
   "loading": "Loading...",
   "newProduct": "New Product",
+  "noProductsFound": "No products found",
   "pageTitleFallback": "Untitled Page",
   "placeholderCategory": "Enter category",
   "placeholderDescription": "Describe the product",
@@ -30,7 +31,7 @@
   "title": "Title",
   "tooltipToggleDarkMode": "Dark mode",
   "tooltipToggleLightMode": "Light mode",
-  "typeHere": "Type here",
+  "searchHere": "Search here",
   "users": "Users",
   "usersPageTitle": "Users",
   "validationCategory": "Category is required (min 3 chars)",
@@ -38,5 +39,5 @@
   "validationImage": "Image is required",
   "validationImageUrl": "Provide a valid URL starting with http(s)",
   "validationPrice": "Price is required and must be greater than zero",
-  "validationTitle": "Title is required (min 3 chars)"
+  "validationTitle": "Title is required (min 3 chars)",
 }

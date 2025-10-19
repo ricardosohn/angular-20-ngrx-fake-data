@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, viewChild } from '@angular/core';
 import { ProductVM } from '../../store/product.vm';
 import { TranslatePipe } from "../../../../shared/pipes/translate.pipe";
 import { ProductRowComponent } from "../../components/product-row/product-row.component";
@@ -18,10 +18,23 @@ export class ProductsPageComponent implements OnInit{
 
   readonly selectedProduct = signal<Product | null>(null);
   readonly selectedEdit = signal<Product | null>(null);
+  readonly search = signal<string>('');
+
+  readonly filteredProducts = computed(() => {
+    const searchParams = this.search().toLowerCase().trim();
+    const items = this.vm.products();
+    if (!searchParams) return items;
+    return items.filter(p =>
+      p.title.toLowerCase().includes(searchParams) ||
+      p.category.toLowerCase().includes(searchParams) ||
+      p.description.toLowerCase().includes(searchParams) ||
+      p.price.toString().includes(searchParams)
+    );
+  });
 
   readonly deleteModalId = 'modal-delete-product';
   readonly confirmDialog = viewChild(ConfirmDialogComponent);
-  readonly createModal = viewChild(ProductFormModalComponent);
+  readonly formModal = viewChild(ProductFormModalComponent);
 
   ngOnInit() {
     this.loadProducts();
@@ -33,7 +46,12 @@ export class ProductsPageComponent implements OnInit{
 
   edit(product: Product): void {
     this.selectedEdit.set(product);
-    this.createModal()?.openModal();
+    this.formModal()?.openModal();
+  }
+
+  openFormModal(): void {
+    this.selectedEdit.set(null);
+    this.formModal()?.openModal();
   }
 
   askRemove(product: Product): void {
@@ -53,5 +71,9 @@ export class ProductsPageComponent implements OnInit{
 
   onEditModalClosed(): void {
     this.selectedEdit.set(null);
+  }
+
+  onSearch(value: string): void {
+    this.search.set(value ?? '');
   }
 }
