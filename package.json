@@ -1,5 +1,5 @@
 {
-  "name": "angular-17-fake-store",
+  "name": "angular-20-ngrx-fake-data",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
