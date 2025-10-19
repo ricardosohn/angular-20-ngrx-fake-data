@@ -39,5 +39,5 @@
   "validationImage": "Image is required",
   "validationImageUrl": "Provide a valid URL starting with http(s)",
   "validationPrice": "Price is required and must be greater than zero",
-  "validationTitle": "Title is required (min 3 chars)",
+  "validationTitle": "Title is required (min 3 chars)"
 }
