@@ -14,6 +14,7 @@
   "loading": "Carregando ...",
   "newProduct": "Novo Produto",
   "noProductsFound": "Nenhum produto encontrado",
+  "notFound": "Não Encontrada",
   "pageTitleFallback": "Página sem título",
   "placeholderCategory": "Informe a categoria",
   "placeholderDescription": "Descreva o produto",
@@ -54,5 +55,6 @@
   "error503": "Serviço indisponível.",
   "toastProductCreated": "Produto criado com sucesso.",
   "toastProductUpdated": "Produto atualizado com sucesso.",
-  "toastProductDeleted": "Produto excluído com sucesso."
+  "toastProductDeleted": "Produto excluído com sucesso.",
+  "pageNotFound": "A página que você procura não existe."
 }
