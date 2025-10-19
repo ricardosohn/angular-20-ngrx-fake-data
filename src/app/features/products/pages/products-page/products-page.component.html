@@ -55,3 +55,8 @@
     </tbody>
   </table>
 </div>
+
+<!-- Loading overlay local, poderia ser global usando um slice de uma store
+ só pra UI com um 'loading global'.
+ Implicaria em disparar ações de start/stop loading nos fluxos desejados -->
+<app-loading-overlay [loading]="vm.loading()" />

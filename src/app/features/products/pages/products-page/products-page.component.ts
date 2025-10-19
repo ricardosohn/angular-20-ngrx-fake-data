@@ -4,12 +4,13 @@ import { TranslatePipe } from "../../../../shared/pipes/translate.pipe";
 import { ProductRowComponent } from "../../components/product-row/product-row.component";
 import { ProductFormModalComponent } from "../../components/product-form-modal/product-form-modal.component";
 import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
+import { LoadingOverlayComponent } from '../../../../shared/components/loading-overlay/loading-overlay.component';
 import { Product } from '../../models/product.model';
 
 
 @Component({
   selector: 'app-root',
-  imports: [TranslatePipe, ProductRowComponent, ProductFormModalComponent, ConfirmDialogComponent],
+  imports: [TranslatePipe, ProductRowComponent, ProductFormModalComponent, ConfirmDialogComponent, LoadingOverlayComponent],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.scss'
 })

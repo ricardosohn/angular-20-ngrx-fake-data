@@ -39,5 +39,20 @@
   "validationImage": "Image is required",
   "validationImageUrl": "Provide a valid URL starting with http(s)",
   "validationPrice": "Price is required and must be greater than zero",
-  "validationTitle": "Title is required (min 3 chars)"
+  "validationTitle": "Title is required (min 3 chars)",
+  "genericError": "Something went wrong. Please try again.",
+  "networkError": "Network error. Check your connection.",
+  "error400": "Bad request.",
+  "error401": "You are not authorized.",
+  "error403": "Access forbidden.",
+  "error404": "Resource not found.",
+  "error409": "Conflict occurred.",
+  "error413": "Payload too large",
+  "error422": "Validation failed.",
+  "error500": "Server error.",
+  "error502": "Bad gateway.",
+  "error503": "Service unavailable.",
+  "toastProductCreated": "Product created successfully.",
+  "toastProductUpdated": "Product updated successfully.",
+  "toastProductDeleted": "Product deleted successfully."
 }

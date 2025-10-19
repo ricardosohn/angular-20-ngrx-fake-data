@@ -1,12 +1,16 @@
 import { inject } from "@angular/core";
 import { ProductApiService } from "../services/products.service";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from "rxjs";
+import { catchError, map, of, switchMap, tap } from "rxjs";
 import { ProductActions } from "./product.actions";
+import { ToastService } from "../../../shared/services/toast.service";
+import { TranslationService } from "../../../core/services/translation.service";
 
 export class ProductEffects {
   private readonly actions$ = inject(Actions);
   private readonly api = inject(ProductApiService);
+  private readonly toast = inject(ToastService);
+  private readonly i18n = inject(TranslationService);
 
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
@@ -54,5 +58,26 @@ export class ProductEffects {
         )
       )
     )
+  );
+
+  toastOnCreateSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.createProductSuccess),
+      tap(() => this.toast.success(this.i18n.translate('toastProductCreated')))
+    ), { dispatch: false }
+  );
+
+  toastOnUpdateSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.updateProductSuccess),
+      tap(() => this.toast.success(this.i18n.translate('toastProductUpdated')))
+    ), { dispatch: false }
+  );
+
+  toastOnDeleteSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.deleteProductSuccess),
+      tap(() => this.toast.success(this.i18n.translate('toastProductDeleted')))
+    ), { dispatch: false }
   );
 }

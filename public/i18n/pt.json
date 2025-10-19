@@ -39,5 +39,20 @@
   "validationImage": "Imagem é obrigatória",
   "validationImageUrl": "Informe uma URL válida iniciando com http(s)",
   "validationPrice": "Preço é obrigatório e deve ser maior que zero",
-  "validationTitle": "Título é obrigatório (mín. 3 caracteres)"
+  "validationTitle": "Título é obrigatório (mín. 3 caracteres)",
+  "genericError": "Algo deu errado. Tente novamente.",
+  "networkError": "Erro de rede. Verifique sua conexão.",
+  "error400": "Requisição inválida.",
+  "error401": "Você não está autorizado.",
+  "error403": "Acesso negado.",
+  "error404": "Recurso não encontrado.",
+  "error409": "Conflito detectado.",
+  "error413": "Payload muito grande",
+  "error422": "Falha de validação.",
+  "error500": "Erro no servidor.",
+  "error502": "Gateway inválido.",
+  "error503": "Serviço indisponível.",
+  "toastProductCreated": "Produto criado com sucesso.",
+  "toastProductUpdated": "Produto atualizado com sucesso.",
+  "toastProductDeleted": "Produto excluído com sucesso."
 }
