@@ -172,29 +172,29 @@ describe('ProductFormComponent', () => {
   });
 
   describe('seleção e limpeza de arquivo', () => {
-  let OriginalFileReader: any;
+  let OriginalFileReader: unknown;
 
     beforeEach(() => {
-  OriginalFileReader = (globalThis as any).FileReader;
+  OriginalFileReader = (globalThis as unknown as { FileReader: typeof FileReader }).FileReader;
     });
 
     afterEach(() => {
-  (globalThis as any).FileReader = OriginalFileReader;
+  (globalThis as unknown as { FileReader: typeof FileReader }).FileReader = OriginalFileReader as typeof FileReader;
     });
 
     it('deve setar imagem e selectedFileName ao selecionar arquivo', () => {
       // Arrange
       const mockResult = 'data:image/png;base64,AAA';
       class FRMock {
-        public onload: ((this: FileReader, ev?: any) => any) | null = null;
-        public result: string | null = null;
+        public onload: ((this: FileReader, ev?: Event) => void) | null = null;
+        public result: string | ArrayBuffer | null = null;
         readAsDataURL(_file: File) {
-          this.result = mockResult as any;
+          this.result = mockResult;
           // Simula async
-          setTimeout(() => this.onload && this.onload.call(this as any), 0);
+          setTimeout(() => this.onload && this.onload.call(this as unknown as FileReader, new Event('load')), 0);
         }
       }
-      (globalThis as any).FileReader = FRMock as any;
+      (globalThis as unknown as { FileReader: typeof FileReader }).FileReader = FRMock as unknown as typeof FileReader;
 
       const input = document.createElement('input');
       const file = new File(['x'], 'pic.png', { type: 'image/png' });

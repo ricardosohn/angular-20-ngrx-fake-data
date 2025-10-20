@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppHeaderComponent } from './app-header.component';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Event as RouterEvent, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { TranslationService } from '../../../core/services/translation.service';
 import { ThemeService } from '../../../core/services/theme.service';
@@ -9,10 +9,10 @@ describe('AppHeaderComponent', () => {
   let fixture: ComponentFixture<AppHeaderComponent>;
 
   // Mocks
-  let routerEvents$: Subject<any>;
+  let routerEvents$: Subject<RouterEvent>;
   let i18nMock: {
     lang: () => string;
-    translate: (key: string, params?: Record<string, any>) => string;
+    translate: (key: string, params?: Record<string, unknown>) => string;
     load: jest.Mock<Promise<void>, [string]>;
   };
   let themeState: 'light' | 'dark';
@@ -20,17 +20,17 @@ describe('AppHeaderComponent', () => {
 
   beforeEach(async () => {
     // Arrange (common): Router e rota aninhada com data.titleKey
-    routerEvents$ = new Subject();
+  routerEvents$ = new Subject<RouterEvent>();
     const mockRouter: Partial<Router> = {
       events: routerEvents$.asObservable(),
-    } as any;
+    };
 
     const deepestRoute: Partial<ActivatedRoute> = {
-      firstChild: null as any,
-      snapshot: { data: { titleKey: 'productsPageTitle' } } as any,
+      firstChild: null,
+      snapshot: { data: { titleKey: 'productsPageTitle' } } as unknown as ActivatedRoute['snapshot'],
     };
-    const childRoute: Partial<ActivatedRoute> = { firstChild: deepestRoute as any };
-    const rootRoute: Partial<ActivatedRoute> = { firstChild: childRoute as any };
+    const childRoute: Partial<ActivatedRoute> = { firstChild: deepestRoute as ActivatedRoute };
+    const rootRoute: Partial<ActivatedRoute> = { firstChild: childRoute as ActivatedRoute };
 
     // Arrange (common): i18n mock
     i18nMock = {

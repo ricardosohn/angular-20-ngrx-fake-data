@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToasterComponent } from './toaster.component';
 import { ToastService, Toast } from '../../services/toast.service';
+import { signal, Signal } from '@angular/core';
 
 describe('ToasterComponent', () => {
   let fixture: ComponentFixture<ToasterComponent>;
@@ -13,10 +14,11 @@ describe('ToasterComponent', () => {
     { id: 4, type: 'info', message: 'info', timeout: 0 },
   ];
 
+  const toastSignal = signal<Toast[]>(toastList);
   const toastServiceMock: Partial<ToastService> = {
-    toasts: { value: toastList, asReadonly: () => ({} as any), set: jest.fn(), update: jest.fn() } as any,
+    toasts: toastSignal as unknown as ToastService['toasts'],
     dismiss: jest.fn(),
-  } as any;
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -27,14 +29,7 @@ describe('ToasterComponent', () => {
     fixture = TestBed.createComponent(ToasterComponent);
     component = fixture.componentInstance;
 
-    // Arrange: override the signal read method to return our list
-    (toastServiceMock.toasts as any) = {
-      asReadonly: () => ({}),
-      // Called by template via @for
-      // Provide a fn property that returns current array
-    } as any;
-    // monkeypatch a method used by template iteration
-    (component.toast.toasts as any) = (() => toastList) as any;
+    // No monkeypatching needed; toasts() will return toastList via signal
 
     fixture.detectChanges();
   });

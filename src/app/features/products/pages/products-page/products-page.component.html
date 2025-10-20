@@ -16,11 +16,12 @@
 <div class="flex items-center justify-between mb-4 gap-3">
   <button type="button" class="btn btn-primary" (click)="openFormModal()">+ {{ 'newProduct' | translate }}</button>
   <input
+    #searchBox
     type="text"
     class="input w-full max-w-xs"
     [placeholder]="'searchHere' | translate"
     [value]="search()"
-    (input)="onSearch($any($event.target).value)"
+    (input)="onSearch(searchBox.value)"
     aria-label="Search"
   />
 </div>

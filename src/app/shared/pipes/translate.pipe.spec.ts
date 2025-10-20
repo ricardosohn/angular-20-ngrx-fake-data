@@ -12,12 +12,12 @@ class HostComponent {}
 
 describe('TranslatePipe', () => {
   let fixture: ComponentFixture<HostComponent>;
-  let i18nMock: { translate: (key: string, params?: Record<string, any>) => string };
+  let i18nMock: { translate: (key: string, params?: Record<string, unknown>) => string };
 
   beforeEach(async () => {
     // Arrange
     i18nMock = {
-      translate: (key: string, params?: Record<string, any>) => {
+      translate: (key: string, params?: Record<string, unknown>) => {
         const name = params?.['name'] ?? '';
         return `${key}-translated-${name}`;
       }

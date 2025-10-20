@@ -50,17 +50,17 @@ describe('ProductsPageComponent', () => {
   ];
 
   const vmMock: Partial<ProductVM> = {
-    products: jest.fn(() => sampleProducts),
-    loading: jest.fn(() => false),
+    products: (() => sampleProducts) as unknown as ProductVM['products'],
+    loading: (() => false) as unknown as ProductVM['loading'],
     loadAll: jest.fn(),
     deleteProduct: jest.fn(),
-  } as any;
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProductsPageComponent, StubFormModal, StubConfirmDialog, StubLoadingOverlay, StubProductRow],
       providers: [
-        { provide: ProductVM, useValue: vmMock } as any,
+        { provide: ProductVM, useValue: vmMock },
         { provide: TranslationService, useValue: { translate: (k: string) => k } },
         provideNgxMask(),
       ],
@@ -88,8 +88,9 @@ describe('ProductsPageComponent', () => {
     // Arrange
     fixture.detectChanges();
     // Arrange: inject a fake formModal instance that the viewChild would return
-    const form = { openModal: jest.fn() } as any;
-    (component as any).formModal = () => form;
+    interface FormModalLike { openModal: () => void }
+    const form: FormModalLike = { openModal: jest.fn() };
+    (component as unknown as { formModal: () => FormModalLike }).formModal = () => form;
 
     // Act
     component.openFormModal();
@@ -103,8 +104,9 @@ describe('ProductsPageComponent', () => {
     // Arrange
     fixture.detectChanges();
     const p = sampleProducts[0];
-    const form = { openModal: jest.fn() } as any;
-    (component as any).formModal = () => form;
+  interface FormModalLike { openModal: () => void }
+  const form: FormModalLike = { openModal: jest.fn() };
+  (component as unknown as { formModal: () => FormModalLike }).formModal = () => form;
 
     // Act
     component.edit(p);
@@ -118,8 +120,9 @@ describe('ProductsPageComponent', () => {
     // Arrange
     fixture.detectChanges();
     const p = sampleProducts[1];
-    const confirm = { open: jest.fn() } as any;
-    (component as any).confirmDialog = () => confirm;
+  interface ConfirmDialogLike { open: () => void }
+  const confirm: ConfirmDialogLike = { open: jest.fn() };
+  (component as unknown as { confirmDialog: () => ConfirmDialogLike }).confirmDialog = () => confirm;
 
     // Act
     component.askRemove(p);

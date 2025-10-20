@@ -48,11 +48,11 @@ describe('UserApiService', () => {
 
   it('deve chamar ApiClient.post("users", dto) ao criar', () => {
     // Arrange
-    const dto = { username: 'u' };
+  const dto = { username: 'u' } as Record<string, unknown>;
     client.post.mockReturnValue({ subscribe: () => {} });
 
     // Act
-    service.create(dto as any);
+  service.create(dto as unknown as Parameters<UserApiService['create']>[0]);
 
     // Assert
     expect(client.post).toHaveBeenCalledWith('users', dto);
@@ -60,11 +60,11 @@ describe('UserApiService', () => {
 
   it('deve chamar ApiClient.put("users/1", dto) ao atualizar', () => {
     // Arrange
-    const dto = { username: 'x' };
+  const dto = { username: 'x' } as Record<string, unknown>;
     client.put.mockReturnValue({ subscribe: () => {} });
 
     // Act
-    service.update(1, dto as any);
+  service.update(1, dto as unknown as Parameters<UserApiService['update']>[1]);
 
     // Assert
     expect(client.put).toHaveBeenCalledWith('users/1', dto);

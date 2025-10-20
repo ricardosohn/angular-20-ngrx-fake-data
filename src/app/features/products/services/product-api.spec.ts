@@ -48,11 +48,11 @@ describe('ProductApiService', () => {
 
   it('deve chamar ApiClient.post("products", dto) ao criar', () => {
     // Arrange
-    const dto = { title: 't', price: 1, description: '', category: '', image: '' };
+  const dto = { title: 't', price: 1, description: '', category: '', image: '' } as Parameters<ProductApiService['create']>[0];
     client.post.mockReturnValue({ subscribe: () => {} });
 
     // Act
-    service.create(dto as any);
+  service.create(dto);
 
     // Assert
     expect(client.post).toHaveBeenCalledWith('products', dto);
@@ -60,11 +60,11 @@ describe('ProductApiService', () => {
 
   it('deve chamar ApiClient.put("products/1", dto) ao atualizar', () => {
     // Arrange
-    const dto = { title: 'x' };
+  const dto = { title: 'x' } as Parameters<ProductApiService['update']>[1];
     client.put.mockReturnValue({ subscribe: () => {} });
 
     // Act
-    service.update(1, dto as any);
+  service.update(1, dto);
 
     // Assert
     expect(client.put).toHaveBeenCalledWith('products/1', dto);

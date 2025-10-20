@@ -22,7 +22,7 @@ describe('CreateProductModalComponent', () => {
   const vmMock: Pick<ProductVM, 'createProduct' | 'updateProduct'> = {
     createProduct: jest.fn(),
     updateProduct: jest.fn(),
-  } as any;
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

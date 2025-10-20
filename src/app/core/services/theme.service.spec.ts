@@ -24,7 +24,7 @@ describe('ThemeService', () => {
 
     // Limpa estado entre os testes
     globalThis.localStorage.removeItem('theme');
-    delete (document.documentElement as any).dataset.theme;
+    delete (document.documentElement as unknown as { dataset: DOMStringMap }).dataset['theme'];
   });
 
   it("usa 'dark' como padrão", async () => {

@@ -11,8 +11,7 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-root',
   imports: [TranslatePipe, ProductRowComponent, ProductFormModalComponent, ConfirmDialogComponent, LoadingOverlayComponent],
-  templateUrl: './products-page.component.html',
-  styleUrl: './products-page.component.scss'
+  templateUrl: './products-page.component.html'
 })
 export class ProductsPageComponent implements OnInit{
   readonly vm = inject(ProductVM);
