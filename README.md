@@ -1,59 +1,109 @@
-# Angular17FakeStore
+# Fake Store — Angular 20 + NgRx (CRUD)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
+Aplicação web que demonstra um CRUD completo de produtos consumindo a Fake Store API.
+O foco é qualidade de implementação: arquitetura, estado assíncrono, formulários reativos, i18n, UX (toasts/loading) e testes unitários.
 
-## Development server
+## Stack e decisões
 
-To start a local development server, run:
+- Angular 20 (foco principal em componentes standalone e signals), TypeScript 5.9
+- NgRx 20 (Store, Effects, Entity) — estado por feature, fornecido na rota de forma lazy
+- Jest — testes unitários AAA
+- RippleUI — Framework de UI baseado no TailwindCSS. UI simples para modais e layout
+- Runtime i18n (service + pipe) com dicionários `public/i18n/{pt,en}.json`
+- Http Interceptor para tratamento de erros com toasts
 
-```bash
-ng serve
-```
+## Arquitetura (visão geral)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- src/app
+  - core: interceptors, services compartilhados (tema, tradução)
+  - shared: componentes reutilizáveis (header, sidebar, toaster, overlay, confirm)
+  - features/products: páginas, componentes, store (actions/reducer/effects/selectors), services
 
-## Code scaffolding
+Padrões adotados:
+- Standalone Components + provideState/provideEffects por rota
+- Facade (`ProductVM`) expondo sinais de estado e ações
+- EntityAdapter para coleção de produtos
+- Formulários reativos com validação e input de imagem (data URL)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Fluxos do CRUD
 
-```bash
-ng generate component component-name
-```
+- Listagem: tabela com busca local (signal + computed)
+- Criação: modal com `ProductForm` (validações), máscara monetária (ngx-mask)
+- Edição: reuso do mesmo `ProductForm` com `initial` e emissão de changes parciais
+- Exclusão: diálogo de confirmação + toast de sucesso/erro
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Integração com a Fake Store API
 
-```bash
-ng generate --help
-```
+- Base: https://fakestoreapi.com/
+- Serviço: `ProductApiService` (GET/POST/PUT/DELETE)
+- Efeitos: disparam chamadas e resultam em ações de sucesso/erro
+- Interceptor: mapeia status HTTP para mensagens internacionalizadas (ex.: 404 → error404)
 
-## Building
+## i18n em runtime
 
-To build the project run:
+- `TranslationService` carrega JSONs em `public/i18n` via HttpClient e expõe `translate()`
+- `TranslatePipe` (impuro) reexecuta quando a linguagem muda
+- Chaves usadas em templates (ex.: `'newProduct' | translate`)
 
-```bash
-ng build
-```
+## UX: Loading e Toasts
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- LoadingOverlay: componente desacoplado via `[loading]` booleano
+- ToastService + Toaster: sucesso/erro/warning/info com timeout; erro tem padrão 5s
 
-## Running unit tests
+## Testes unitários
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Runner: Jest (sem Karma)
+- Padrão: Arrange → Act → Assert, com comentários nos specs
+- Cobertura:
+  - Interceptor de erros (mapeamentos de status)
+  - Products Page (init, editar/criar, remover, busca)
+  - Product Form/Modal (envio, reset, update)
+  - Shared (ConfirmDialog, LoadingOverlay, Toaster, NotFound, AppSidebar)
+  - Serviços (ToastService)
 
-```bash
-ng test
-```
+Como rodar
+- Instalar deps: pnpm i (ou npm i)
+- Servir: npm start → http://localhost:4200
+- Testes: npm test (ou npm run test:watch / test:coverage)
 
-## Running end-to-end tests
+## Como rodar localmente
 
-For end-to-end (e2e) testing, run:
+1) Instale dependências
+	- pnpm i
+2) Rode a aplicação
+	- pnpm start
+3) Testes
+	- pnpm test
 
-```bash
-ng e2e
-```
+Obs.: Projeto usa Jest; não há Karma/Protractor.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Boas práticas aplicadas
 
-## Additional Resources
+- Angular moderno (standalone, Signals, provideState/Efeitos por rota)
+- NgRx com Entity e facade simplificando o binding em componentes
+- Seletores protegidos para evitar acesso a feature state antes do registro de rota
+- Componentes compartilháveis e desacoplados (Overlay, Confirm, Toaster)
+- Interceptor genérico para erros HTTP + i18n
+- Testes AAA com dublês de dependências, sem zona
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Considerações e trade-offs
+
+- Busca local (client-side) por simplicidade; poderia ser delegada à API/servidor
+- Overlay local na página de produtos; alternativa: slice de UI global (NgRx) para busy global
+- Upload de imagem via Data URL para simplificar a demo; em produção, recomendável storage externo
+
+## Mapeamento aos critérios do desafio
+
+- Estrutura e organização: pastas por domínios (core/shared/features), componentes standalone, NgRx por feature
+- Angular moderno e boas práticas: Signals, provideState/Efeitos, interceptors, forms reativos
+- Reuso e manutenibilidade: componentes compartilhados e VM (facade), EntityAdapter, serviços
+- Estado assíncrono + API: NgRx Effects + ProductApiService + interceptors (erros)
+- Formulários reativos + validações + erros: ProductForm com validações e dinâmica de imagem
+- Testes unitários: Jest, AAA, ampla cobertura em features e shared
+
+## Scripts úteis
+
+- Desenvolver: `pnpm start`
+- Testes: `pnpm test` | `pnpm run test:watch` | `pnpm run test:coverage`
+- Build: `pnpm run build`
+
