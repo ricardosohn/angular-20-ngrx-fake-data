@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ProductApiService } from './products.service';
+import { ProductApiService } from './product-api.service';
 import { ApiClient } from '../../../core/services/api-client.service';
 
 class ApiClientMock {
